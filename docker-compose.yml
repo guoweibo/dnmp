@@ -10,19 +10,31 @@ nginx:
     - ./log/nginx/:/var/log/nginx/:rw
   links:
     - php72:fpm
+    - php56:fpm
 
 php72:
   build: ./php/php72/
   expose:
-    - "9000"
+    - "9072"
   volumes:
     - ./www/:/var/www/html/:rw
-    - ./conf/php/php.ini:/usr/local/etc/php/php.ini:ro
-    - ./conf/php/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
-    - ./log/php-fpm/:/var/log/php-fpm/:rw
+    - ./conf/php72/php.ini:/usr/local/etc/php/php.ini:ro
+    - ./conf/php72/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./log/php-fpm-72/:/var/log/php-fpm/:rw
   links:
     - mysql:mysql
-    - redis:redis
+
+php56:
+  build: ./php/php56/
+  expose:
+    - "9056"
+  volumes:
+    - ./www/:/var/www/html/:rw
+    - ./conf/php56/php.ini:/usr/local/etc/php/php.ini:ro
+    - ./conf/php56/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./log/php-fpm-56/:/var/log/php-fpm/:rw
+  links:
+    - mysql:mysql
 
 mysql:
   image: mysql:latest
@@ -33,9 +45,5 @@ mysql:
     - ./mysql/:/var/lib/mysql/:rw
     - ./log/mysql/:/var/log/mysql/:rw
   environment:
-    MYSQL_ROOT_PASSWORD: "123456"
+    MYSQL_ROOT_PASSWORD: "trustone.pwd"
 
-redis:
-  image: redis:latest
-  ports:
-    - "6379:6379"
