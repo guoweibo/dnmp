@@ -9,8 +9,8 @@ nginx:
     - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./log/nginx/:/var/log/nginx/:rw
   links:
-    - php72
-    - php56
+    - php72:fpm72
+    - php56:fpm56
 
 php72:
   build: ./php/php72/
