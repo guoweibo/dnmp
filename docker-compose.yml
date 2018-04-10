@@ -14,6 +14,8 @@ nginx:
 
 php72:
   build: ./php/php72/
+  ports:
+    - "9072:9072"
   expose:
     - "9072"
   volumes:
@@ -26,6 +28,8 @@ php72:
 
 php56:
   build: ./php/php56/
+  ports:
+    - "9056:9056"
   expose:
     - "9056"
   volumes:
