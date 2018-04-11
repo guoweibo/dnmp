@@ -1,5 +1,5 @@
 FROM php:5.6-fpm
-
+RUN usermod -u 1000 www
 COPY ./sources.list.jessie /etc/apt/sources.list
 
 # Extensions: ctype, dom, fileinfo, ftp, hash, iconv, json, pdo, pdo_sqlite, session,

@@ -1,4 +1,5 @@
 FROM php:7.2-fpm
+RUN usermod -u 1000 www
 
 COPY ./sources.list.stretch /etc/apt/sources.list
 
