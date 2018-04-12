@@ -45,5 +45,6 @@ mysql:
     - ./mysql/:/var/lib/mysql/:rw
     - ./log/mysql/:/var/log/mysql/:rw
   environment:
-    MYSQL_ROOT_PASSWORD: "trustone.pwd"
+     MYSQL_ROOT_PASSWORD: "123456"
+    
 
